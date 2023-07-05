@@ -23,12 +23,18 @@ const App = () => {
     console.log(JSON.stringify(response.data, null, 3));
   };
 
+  const deleteBook = async () => {
+    const response = await axios.delete(`${URL}/2`)
+    console.log(JSON.stringify(response.data, null, 3));
+  }
+
   return (
     <View style={styles.cont}>
       <Text style={styles.welcomeText}>
         Welcome To {'\n'} HeroDev Youtube Channel
       </Text>
       <Button title="add book" onPress={addBook} />
+      <Button title="delete book" onPress={deleteBook} />
     </View>
   );
 };
