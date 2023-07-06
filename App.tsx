@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Alert, Button, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import axios from 'axios';
 
@@ -6,8 +6,13 @@ const App = () => {
   const URL = 'https://649ea51c245f077f3e9cb5bc.mockapi.io/books';
 
   const getBooks = async () => {
-    const response = await axios.get(URL);
-    console.log(JSON.stringify(response.data, null, 3));
+    try {
+      const response = await axios.get(URL);
+      console.log(JSON.stringify(response.data, null, 3));
+    } catch (error) {
+      console.log(error?.message);
+      Alert.alert(error?.message);
+    }
   };
 
   useEffect(() => {
@@ -24,19 +29,24 @@ const App = () => {
   };
 
   const deleteBook = async () => {
-    const response = await axios.delete(`${URL}/12`)
-    console.log(JSON.stringify(response.data, null, 3));
-  }
+    try {
+      const response = await axios.delete(`${URL}/12`);
+      console.log(JSON.stringify(response.data, null, 3));
+    } catch (error) {
+      console.log(error?.message);
+      Alert.alert(error?.message);
+    }
+  };
 
-const editBook = async () => {
-  const response = await axios.put(`${URL}/4`, {
-    author: 'Wilson',
-    cover:
-      'https://marketplace.canva.com/EAE8SMVGSjs/1/0/1003w/canva-pink-daily-beauty-tips-book-cover-wlUo-6qRuqQ.jpg',
-    name_of_book: 'beauty tips',
-  });
-  console.log(JSON.stringify(response.data, null, 3));
-};
+  const editBook = async () => {
+    const response = await axios.put(`${URL}/4`, {
+      author: 'Wilson',
+      cover:
+        'https://marketplace.canva.com/EAE8SMVGSjs/1/0/1003w/canva-pink-daily-beauty-tips-book-cover-wlUo-6qRuqQ.jpg',
+      name_of_book: 'beauty tips',
+    });
+    console.log(JSON.stringify(response.data, null, 3));
+  };
 
   return (
     <View style={styles.cont}>
