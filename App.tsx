@@ -24,9 +24,19 @@ const App = () => {
   };
 
   const deleteBook = async () => {
-    const response = await axios.delete(`${URL}/2`)
+    const response = await axios.delete(`${URL}/12`)
     console.log(JSON.stringify(response.data, null, 3));
   }
+
+const editBook = async () => {
+  const response = await axios.put(`${URL}/4`, {
+    author: 'Wilson',
+    cover:
+      'https://marketplace.canva.com/EAE8SMVGSjs/1/0/1003w/canva-pink-daily-beauty-tips-book-cover-wlUo-6qRuqQ.jpg',
+    name_of_book: 'beauty tips',
+  });
+  console.log(JSON.stringify(response.data, null, 3));
+};
 
   return (
     <View style={styles.cont}>
@@ -35,6 +45,7 @@ const App = () => {
       </Text>
       <Button title="add book" onPress={addBook} />
       <Button title="delete book" onPress={deleteBook} />
+      <Button title="edit book" onPress={editBook} />
     </View>
   );
 };
