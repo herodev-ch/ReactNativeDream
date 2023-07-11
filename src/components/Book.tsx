@@ -12,6 +12,7 @@ interface Props {
   price: number;
   coverURL: string;
   categoryColor: string;
+  onDeletePress: () => void
 }
 
 const Book: FC<Props> = ({
@@ -20,11 +21,15 @@ const Book: FC<Props> = ({
   price,
   coverURL,
   categoryColor,
+  onDeletePress
 }) => {
   return (
     <View style={styles.container}>
       <View style={[styles.coloredSquare, {backgroundColor: categoryColor}]}>
         <Image source={{uri: coverURL}} style={styles.image} />
+        <Text style={styles.deleteText} 
+        onPress={onDeletePress}
+        >Delete</Text>
       </View>
 
       <Text>{author}</Text>
@@ -51,5 +56,7 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     marginTop: -20,
     borderRadius: 8,
-  },
+  },deleteText:{
+    color:"red"
+  }
 });
