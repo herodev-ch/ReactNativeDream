@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     height: 130,
     width: 80,
     resizeMode: 'stretch',
-    backgroundColor: 'blue',
     marginTop: -20,
     borderRadius: 8,
   },
