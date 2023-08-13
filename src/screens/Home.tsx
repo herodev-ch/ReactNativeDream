@@ -2,6 +2,7 @@ import {Alert, Button, FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Book from '../components/Book';
 import axios from 'axios';
+import AddButton from '../components/AddButton';
 
 const Home = () => {
   const getListOfBooks = async () => {
@@ -45,6 +46,7 @@ const Home = () => {
           />
         )}
       />
+      <AddButton onAddPress={() => console.log('Button is working')} />
     </View>
   );
 };
