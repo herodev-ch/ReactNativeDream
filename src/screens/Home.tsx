@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Book from '../components/Book';
 import axios from 'axios';
 import AddButton from '../components/AddButton';
+import AddOrEditBook from './AddOrEditBook';
 
 const Home = () => {
   const getListOfBooks = async () => {
@@ -28,6 +29,8 @@ const Home = () => {
     getListOfBooks();
   };
 
+const [modalVisible, setModalVisible] = useState(false)
+
   return (
     <View>
       <FlatList
@@ -46,7 +49,8 @@ const Home = () => {
           />
         )}
       />
-      <AddButton onAddPress={() => console.log('Button is working')} />
+      <AddButton onAddPress={() => setModalVisible(true)} />
+      <AddOrEditBook visible={modalVisible} onRequestClose={() => setModalVisible(false)}/>
     </View>
   );
 };
