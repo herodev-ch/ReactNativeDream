@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "526520353599",
+    "project_id": "react-native-dream-be767",
+    "storage_bucket": "react-native-dream-be767.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526520353599:android:8ed7a8658843b131fac98a",
+        "android_client_info": {
+          "package_name": "com.reactnativedream"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs7_4FEXPpEHQQgSNqBh0B1ylxPPAWEPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Audiowide-Regular.ttf",
+      "sha1": "c78238f19d250c8ce9d5ec80d33b2b3b8ba6f28e"
+    },
+    {
+      "path": "src/assets/fonts/Langar-Regular.ttf",
+      "sha1": "b86c8dbea11e728426f6b34a93964a8768355aad"
+    },
+    {
+      "path": "src/assets/fonts/NovaFlat-Regular.ttf",
+      "sha1": "bbb329c45f7de2138b85fec8a41e16ae9ba6210f"
+    },
+    {
+      "path": "src/assets/fonts/Raleway-Italic-VariableFont_wght.ttf",
+      "sha1": "b9d3a28e6dcef24b22a60ea7053660c847835300"
+    },
+    {
+      "path": "src/assets/fonts/Raleway-VariableFont_wght.ttf",
+      "sha1": "efa4e04b26524e3de1546c97c03a4cfc0c80bb76"
+    },
+    {
+      "path": "src/assets/fonts/Redressed-Regular.ttf",
+      "sha1": "de3fb0ab0aac247e6e70ad779bb945f7f23f616d"
+    }
+  ]
+}
