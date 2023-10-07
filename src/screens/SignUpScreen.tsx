@@ -28,7 +28,8 @@ const SignUpScreen = ({navigation}) => {
         navigation.navigate("Login")
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.nativeErrorMessage);
+        Alert.alert(err.nativeErrorMessage)
       });
   };
 
