@@ -13,7 +13,7 @@ import MyTextInput from '../components/MyTextInput';
 import SocialMedia from '../components/SocialMedia';
 import auth from '@react-native-firebase/auth';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -24,7 +24,8 @@ const SignUpScreen = () => {
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        Alert.alert('User Created with those credentials ' + email , password  );
+        Alert.alert('User Created with those credentials Please Login');
+        navigation.navigate("Login")
       })
       .catch(err => {
         console.log(err);
@@ -49,7 +50,7 @@ const SignUpScreen = () => {
           {/* value, onChangeText */}
           <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder="Enter E-mail or User Name" />
           <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder="Password" secureTextEntry />
-          <MyTextInput value={confirmPassword} placeholder="Confirm Password" secureTextEntry />
+          <MyTextInput value={confirmPassword} onChangeText={text => setConfirmPassword(text)} placeholder="Confirm Password" secureTextEntry />
 
           <MyButton onPress={signUpTestFn} title={'Sign Up'} />
 

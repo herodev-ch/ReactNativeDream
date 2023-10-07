@@ -28,7 +28,7 @@ const LoginScreen = () => {
             <MyTextInput placeholder="Enter E-mail or User Name"/>
             <MyTextInput placeholder="Password" secureTextEntry/>
 
-            <Text style={styles.textDontHave}>Don't Have An Account Yet?</Text>
+            <Text style={styles.textDontHave}>Don't Have An Account Yet? <Text style={{textDecorationLine:"underline"}}>Sign Up</Text></Text>
             <MyButton title={"Login"}/>
 
             <Text style={styles.orText}>OR</Text>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     color:"black", 
     marginBottom: 15,
-    fontFamily:"NovaFlat-Regular"
+    // fontFamily:"Langar-Regular"
   },
   orText:{
         fontSize: 20,
