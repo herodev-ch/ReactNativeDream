@@ -5,13 +5,32 @@ import {
   Platform,
   View,
   Text,
+  Alert,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import MyButton from '../components/MyButton';
 import MyTextInput from '../components/MyTextInput';
 import SocialMedia from '../components/SocialMedia';
+import auth from "@react-native-firebase/auth"
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const loginWithEmailAndPass = () => {
+    auth().signInWithEmailAndPassword(email, password)
+    .then((res) => {
+      console.log(res)
+      Alert.alert("Success: Logged In")
+      navigation.navigate("HomeScreen")
+    })
+    .catch(err =>{ 
+      console.log(err)
+      Alert.alert(err.nativeErrorMessage)
+    })
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -25,11 +44,11 @@ const LoginScreen = () => {
         <Text style={styles.title}>Fatmore</Text>
 
         <View style={styles.inputsContainer}>
-            <MyTextInput placeholder="Enter E-mail or User Name"/>
-            <MyTextInput placeholder="Password" secureTextEntry/>
+            <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder="Enter E-mail or User Name"/>
+            <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder="Password" secureTextEntry/>
 
             <Text style={styles.textDontHave}>Don't Have An Account Yet? <Text style={{textDecorationLine:"underline"}}>Sign Up</Text></Text>
-            <MyButton title={"Login"}/>
+            <MyButton title={"Login"} onPress={loginWithEmailAndPass}/>
 
             <Text style={styles.orText}>OR</Text>
 
