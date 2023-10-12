@@ -1731,6 +1731,11 @@
   dependencies:
     plist "^3.1.0"
 
+"@react-native-firebase/firestore@^18.5.0":
+  version "18.5.0"
+  resolved "https://registry.npmjs.org/@react-native-firebase/firestore/-/firestore-18.5.0.tgz#dbbcc0c29ac70b37277f8c4bc3a4ff241bfea381"
+  integrity sha512-/LiCWjuB4YuPvxHz2H6Nu/dY3zjeIjLfzvMWAuHRb10UtRUxaFlgrIgWioR6plwv8JHrgZBNdnZCyc+sVxEqRg==
+
 "@react-native-firebase/messaging@^18.5.0":
   version "18.5.0"
   resolved "https://registry.npmjs.org/@react-native-firebase/messaging/-/messaging-18.5.0.tgz#2a80b25816470e9843682e031a3a113566067ce6"
