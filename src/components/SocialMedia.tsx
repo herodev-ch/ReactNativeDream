@@ -1,14 +1,7 @@
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, {FC} from 'react';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, { FC } from 'react';
 
-const SocialMedia: FC<{onGooglePress: () => void}> = ({onGooglePress}) => {
+const SocialMedia :FC<{onGooglePress?: () =>void}> = ({onGooglePress}) => {
   return (
     <View style={styles.container}>
       <Image
@@ -23,8 +16,8 @@ const SocialMedia: FC<{onGooglePress: () => void}> = ({onGooglePress}) => {
         <Image
           source={require('../assets/SocialMediaIcons/google.png')}
           style={styles.image}
-        />
-      </TouchableOpacity>
+          />
+        </TouchableOpacity>
     </View>
   );
 };

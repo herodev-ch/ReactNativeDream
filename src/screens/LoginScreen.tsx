@@ -33,8 +33,8 @@ async function onGoogleButtonPress() {
     const {idToken, user} = await GoogleSignin.signIn();
 
     console.log(user);
-    Alert.alert('Success login');
-
+    // Alert.alert('Success login');
+    navigation.navigate('HomeScreen');
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
@@ -90,11 +90,10 @@ async function onGoogleButtonPress() {
           </Text>
           <MyButton title={'Login'} onPress={loginWithEmailAndPass} />
 
-<Button title='login with google' onPress={onGoogleButtonPress}/>
 
           <Text style={styles.orText}>OR</Text>
 
-          <SocialMedia />
+          <SocialMedia onGooglePress={onGoogleButtonPress} />
         </View>
       </ImageBackground>
     </View>
