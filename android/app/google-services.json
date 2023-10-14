@@ -12,7 +12,20 @@
           "package_name": "com.reactnativedream"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "526520353599-k2r176g5onjtikkj4uvb9p1v7e1ja68g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reactnativedream",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "526520353599-3dr98tlduevjslgtki0km4b11j5eo2qd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBs7_4FEXPpEHQQgSNqBh0B1ylxPPAWEPY"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526520353599-3dr98tlduevjslgtki0km4b11j5eo2qd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "526520353599-edlee2s0lrk31u5hinquvhev67s5bpsg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.ReactNativeDream"
+              }
+            }
+          ]
         }
       }
     }

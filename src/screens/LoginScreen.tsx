@@ -6,16 +6,44 @@ import {
   View,
   Text,
   Alert,
+  Button,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MyButton from '../components/MyButton';
 import MyTextInput from '../components/MyTextInput';
 import SocialMedia from '../components/SocialMedia';
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+useEffect(() => {
+  GoogleSignin.configure({
+    webClientId: '526520353599-3dr98tlduevjslgtki0km4b11j5eo2qd.apps.googleusercontent.com',
+  });
+},[])
+
+async function onGoogleButtonPress() {
+  try {
+    // Check if your device supports Google Play
+    await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+    // Get the users ID token
+    const {idToken, user} = await GoogleSignin.signIn();
+
+    console.log(user);
+    Alert.alert('Success login');
+
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
   const loginWithEmailAndPass = () => {
     auth()
@@ -61,6 +89,8 @@ const LoginScreen = ({navigation}) => {
             <Text style={{textDecorationLine: 'underline'}}>Sign Up</Text>
           </Text>
           <MyButton title={'Login'} onPress={loginWithEmailAndPass} />
+
+<Button title='login with google' onPress={onGoogleButtonPress}/>
 
           <Text style={styles.orText}>OR</Text>
 
