@@ -1,8 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
-import {Rating} from 'react-native-elements';
+import {StyleSheet, View, Image, } from 'react-native';
+// import {Rating} from 'react-native-elements';
 import MyText from './MyText';
-import Feather from 'react-native-vector-icons/Feather';
 
 function FoodCard({image, title, price, onPress}) {
   return (
@@ -14,19 +13,15 @@ function FoodCard({image, title, price, onPress}) {
         <MyText numberOfLines={1} style={styles.title}>
           {title}
         </MyText>
-        <Rating
+        {/* <Rating
           ratingBackgroundColor="red"
           tintColor="red"
           ratingCount={5}
           imageSize={24}
           style={{alignSelf: 'flex-start', paddingTop: 4}}
-        />
+        /> */}
         <MyText style={styles.price}>${price}</MyText>
-        <View style={styles.bagCon}>
-          <TouchableOpacity onPress={onPress}>
-            <Feather color="red" name="shopping-bag" size={19} />
-          </TouchableOpacity>
-        </View>
+
       </View>
     </View>
   );

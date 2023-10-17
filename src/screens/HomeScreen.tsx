@@ -1,20 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  ActivityIndicator,
-  FlatList,
-} from 'react-native';
+import {StyleSheet, View, ActivityIndicator, FlatList} from 'react-native';
 import MyView from '../components/MyView';
 import MyText from '../components/MyText';
 import Search from '../components/Search';
 import Category from '../components/Category';
 import firestore from '@react-native-firebase/firestore';
+import FoodCard from '../components/FoodCard';
 
 function HomeScreen({}) {
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
   const [categories, setCategories] = useState([]); // Initial empty array of users
+  const [foods, setFoods] = useState([]); // Initial empty array of users
 
   useEffect(() => {
     const subscriber = firestore()
@@ -36,6 +32,26 @@ function HomeScreen({}) {
     // Unsubscribe from events when no longer in use
     return () => subscriber();
   }, []);
+
+
+  useEffect(() => {
+    const subscriber = firestore().collection("foods").onSnapshot((res) => {
+      const foods = []
+
+      res.forEach(documentSnapshot => {
+        foods.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
+        });
+      });
+
+      setFoods(foods);
+    })
+
+    return () => subscriber()
+  },[])
+
+  console.log(foods[0])
 
   if (loading) {
     return <ActivityIndicator />;
@@ -62,6 +78,16 @@ function HomeScreen({}) {
         />
       </View>
       <MyText style={styles.text}>Main Dishes</MyText>
+      <FlatList 
+          horizontal
+          data={foods}
+          renderItem={({item}) => (
+            <FoodCard image={item.imageURL}
+              title={item.title}
+              price={item.price}
+            />
+          )}
+      />
     </MyView>
   );
 }
