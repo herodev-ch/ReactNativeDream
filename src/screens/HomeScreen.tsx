@@ -7,7 +7,7 @@ import Category from '../components/Category';
 import firestore from '@react-native-firebase/firestore';
 import FoodCard from '../components/FoodCard';
 
-function HomeScreen({}) {
+function HomeScreen({navigation}) {
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
   const [categories, setCategories] = useState([]); // Initial empty array of users
   const [foods, setFoods] = useState([]); // Initial empty array of users
@@ -91,8 +91,8 @@ function HomeScreen({}) {
       <MyText style={styles.text}>Catogries</MyText>
 
       <Button 
-          title='Add Category'
-          onPress={addCategory}
+          title='Add Category Or Foods'
+          onPress={() => navigation.navigate("AddFoodOrCategory")}
       />
 
       <View style={{height: 100}}>
@@ -105,10 +105,7 @@ function HomeScreen({}) {
         />
       </View>
       <MyText style={styles.text}>Main Dishes</MyText>
-      <Button 
-          title='Add Food'
-          onPress={addFood}
-      />
+
       <FlatList 
           horizontal
           data={foods}
