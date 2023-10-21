@@ -16,6 +16,17 @@ function HomeScreen({navigation}) {
   console.log(JSON.stringify(foods, null, 3));
   console.log('====================================');
 
+  const testUpdate = () => {
+    firestore()
+      .collection("foods")
+      .doc("A5MwWTV40gr8yyh3M3FN")
+      .update({
+        title:"only salad",
+        price: 9.05,
+        imageURL:"https://c8.alamy.com/comp/2CB3A77/green-salad-in-a-transparent-bowl-isolated-on-white-2CB3A77.jpg"
+      })
+    
+  }
 
   useEffect(() => {
     const subscriber = firestore()
@@ -77,6 +88,11 @@ function HomeScreen({navigation}) {
       <Button 
           title='Add Category Or Foods'
           onPress={() => navigation.navigate("AddFoodOrCategory")}
+      />
+
+      <Button 
+          title='test update'
+          onPress={testUpdate}
       />
 
       <View style={{height: 150}}>

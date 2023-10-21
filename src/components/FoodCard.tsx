@@ -3,8 +3,11 @@ import {StyleSheet, View, Image, Button, } from 'react-native';
 // import {Rating} from 'react-native-elements';
 import MyText from './MyText';
 import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 
-function FoodCard({image, title, price, onPress, itemKey}) {
+function FoodCard({image, title, price, onPress, itemKey, }) {
+
+  const navigation = useNavigation()
 
   const deleteFood = () => {
     firestore()
@@ -15,6 +18,17 @@ function FoodCard({image, title, price, onPress, itemKey}) {
         console.log('Food deleted!');
       });
   }
+
+
+const editFood = () => {
+  navigation.navigate("AddFoodOrCategory", {
+    isEdit: true,
+    title,
+    price,
+    image,
+    itemKey
+  })
+}
 
   return (
     <View style={styles.con}>
@@ -33,7 +47,10 @@ function FoodCard({image, title, price, onPress, itemKey}) {
           style={{alignSelf: 'flex-start', paddingTop: 4}}
         /> */}
         <MyText style={styles.price}>${price}</MyText>
+        <View style={{flexDirection:"row"}}> 
         <Button title='delete' onPress={deleteFood} color={"white"}/>
+        <Button title='edit' onPress={editFood} color={"white"}/>
+        </View>
       </View>
     </View>
   );
