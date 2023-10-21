@@ -12,26 +12,10 @@ function HomeScreen({navigation}) {
   const [categories, setCategories] = useState([]); // Initial empty array of users
   const [foods, setFoods] = useState([]); // Initial empty array of users
 
-  const addCategory = () => {
-    firestore().collection("catogries").add({
-      title:"Vegetables",
-      imageURL:"https://freepngimg.com/download/healthy_food/2-2-healthy-food-transparent.png"
-    })
-  }
+  console.log('================categories====================');
+  console.log(JSON.stringify(foods, null, 3));
+  console.log('====================================');
 
-
-  const addFood = () => {
-    firestore().collection("foods").add({
-      imageURL:"https://clipart-library.com/image_gallery2/Junk-Food-PNG-Picture.png",
-      title:"Burger",
-      price: 8 
-    }).then((res)=>{
-      Alert.alert("Food Added")
-    }).catch((err) =>{
-        console.log(err)
-        Alert.alert("Error Happen")
-    })
-  }
 
   useEffect(() => {
     const subscriber = firestore()
@@ -95,12 +79,12 @@ function HomeScreen({navigation}) {
           onPress={() => navigation.navigate("AddFoodOrCategory")}
       />
 
-      <View style={{height: 100}}>
+      <View style={{height: 150}}>
         <FlatList
           horizontal
           data={categories}
           renderItem={({item}) => (
-            <Category title={item.title} image={{uri: item.imageURL}} />
+            <Category title={item.title} itemKey={item.key} image={{uri: item.imageURL}} />
           )}
         />
       </View>
@@ -113,6 +97,7 @@ function HomeScreen({navigation}) {
             <FoodCard image={item.imageURL}
               title={item.title}
               price={item.price}
+              itemKey={item.key}
             />
           )}
       />

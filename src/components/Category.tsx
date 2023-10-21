@@ -1,9 +1,22 @@
 import React, {FC} from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {StyleSheet, View, Image, Text, Button} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
-const Category: FC<{image: any; title: string}> = ({image, title}) => {
+const Category: FC<{image: any; title: string, itemKey:string}> = ({image, title,itemKey}) => {
+
+  const deleteItem = () =>{
+    firestore()
+      .collection('catogries')
+      .doc(itemKey)
+      .delete()
+      .then(() => {
+        console.log('Category deleted!');
+      })
+  }
+
   return (
     <View style={styles.con}>
+      <Button title='delete' onPress={deleteItem}/>
       <Image style={styles.image} source={image} />
       <Text style={styles.text}>{title}</Text>
     </View>
@@ -12,7 +25,7 @@ const Category: FC<{image: any; title: string}> = ({image, title}) => {
 
 const styles = StyleSheet.create({
   con: {
-    height: 89,
+    height: 120,
     width: 139,
     borderRadius: 32,
     overflow: 'hidden',
@@ -34,3 +47,5 @@ const styles = StyleSheet.create({
   },
 });
 export default Category;
+
+

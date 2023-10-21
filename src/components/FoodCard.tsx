@@ -1,9 +1,21 @@
 import React from 'react';
-import {StyleSheet, View, Image, } from 'react-native';
+import {StyleSheet, View, Image, Button, } from 'react-native';
 // import {Rating} from 'react-native-elements';
 import MyText from './MyText';
+import firestore from '@react-native-firebase/firestore';
 
-function FoodCard({image, title, price, onPress}) {
+function FoodCard({image, title, price, onPress, itemKey}) {
+
+  const deleteFood = () => {
+    firestore()
+      .collection('foods')
+      .doc(itemKey)
+      .delete()
+      .then(() => {
+        console.log('Food deleted!');
+      });
+  }
+
   return (
     <View style={styles.con}>
       <View style={styles.imageCon}>
@@ -21,7 +33,7 @@ function FoodCard({image, title, price, onPress}) {
           style={{alignSelf: 'flex-start', paddingTop: 4}}
         /> */}
         <MyText style={styles.price}>${price}</MyText>
-
+        <Button title='delete' onPress={deleteFood} color={"white"}/>
       </View>
     </View>
   );
