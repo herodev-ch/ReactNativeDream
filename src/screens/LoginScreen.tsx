@@ -84,7 +84,7 @@ async function onGoogleButtonPress() {
             secureTextEntry
           />
 
-          <Text style={styles.textDontHave}>
+          <Text style={styles.textDontHave} onPress={() => navigation.navigate("SignUp")}>
             Don't Have An Account Yet?{' '}
             <Text style={{textDecorationLine: 'underline'}}>Sign Up</Text>
           </Text>
